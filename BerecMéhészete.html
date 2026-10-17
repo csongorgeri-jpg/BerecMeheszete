@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Berec Méhészete | Termelői mézek</title>
+    <meta name="description" content="Berec Méhészete – saját termelésű repce-, napraforgó-, vegyes virág- és akácméz. Rendelj közvetlenül tőlünk!">
+
+    <!-- Ikonok -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #e9ad32;
+            --gold-light: #ffcf68;
+            --brown: #3c2414;
+            --brown-light: #694326;
+            --cream: #fff9ed;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--brown);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* FEJLÉC */
+
+        header {
+            background: #fffdf8;
+            padding: 16px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 15px #3c24140d;
+        }
+
+        .logo {
+            color: var(--brown);
+            font-size: 23px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--brown);
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #bf8012;
+        }
+
+        .nav-button {
+            background: var(--gold);
+            color: var(--brown);
+            padding: 11px 18px;
+            border-radius: 25px;
+        }
+
+        .nav-button:hover {
+            background: var(--gold-light);
+            color: var(--brown);
+        }
+
+        /* FŐOLDALI BANNER */
+
+        .hero {
+            min-height: 520px;
+            padding: 90px 8%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(90deg,
+                    rgba(43, 27, 14, 0.94),
+                    rgba(43, 27, 14, 0.72),
+                    rgba(43, 27, 14, 0.2)),
+                url("https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1800&q=85")
+                center/cover no-repeat;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #e9ad3226;
+            border: 1px solid #e9ad3270;
+            color: var(--gold-light);
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 66px);
+            line-height: 1.12;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--gold-light);
+        }
+
+        .hero p {
+            max-width: 530px;
+            color: #f5eadb;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .primary-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--brown);
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: 800;
+            transition: 0.25s;
+        }
+
+        .primary-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .primary-button i {
+            margin-left: 8px;
+        }
+
+        /* BIZALMI SÁV */
+
+        .benefits {
+            padding: 25px 7%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 35px;
+            background: white;
+            border-bottom: 1px solid #f0e5d2;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .benefit i {
+            color: #c78b20;
+            font-size: 20px;
+        }
+
+        /* ÁLTALÁNOS SZAKASZOK */
+
+        section {
+            scroll-margin-top: 85px;
+        }
+
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 45px;
+        }
+
+        .section-heading small {
+            display: block;
+            color: #b17a1a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(29px, 4vw, 42px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: #786958;
+        }
+
+        /* TERMÉKEK */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #f0e5d2;
+            border-radius: 18px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: 0.25s;
+            box-shadow: 0 8px 25px #3c241408;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px #3c241415;
+            border-color: #e9ad3280;
+        }
+
+        .product-icon {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #fff4d7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bd7c12;
+            font-size: 43px;
+        }
+
+        .product-card:nth-child(2) .product-icon {
+            background: #fff0b7;
+            color: #d49a12;
+        }
+
+        .product-card:nth-child(3) .product-icon {
+            background: #f8e4a9;
+            color: #a56e14;
+        }
+
+        .product-card:nth-child(4) .product-icon {
+            background: #ffe9c8;
+            color: #bc821c;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .product-card p {
+            color: #8b7a67;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            font-size: 27px;
+            font-weight: 800;
+            color: #9c6810;
+        }
+
+        .price span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .order-button {
+            display: block;
+            margin-top: 22px;
+            background: var(--brown);
+            color: white;
+            padding: 12px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .order-button:hover {
+            background: #70441f;
+        }
+
+        .order-button i {
+            margin-right: 7px;
+        }
+
+        /* BEMUTATKOZÁS */
+
+        .about {
+            background: #f4ead8;
+        }
+
+        .about-content {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-icon {
+            min-height: 300px;
+            border-radius: 22px;
+            background:
+                radial-gradient(circle at 50% 40%,
+                    #ffdb7c 0,
+                    #e8ad32 35%,
+                    #9c5e1c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff7df;
+            font-size: 115px;
+            box-shadow: inset 0 0 60px #6c3c1730;
+        }
+
+        .about-text small {
+            color: #a16b14;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            line-height: 1.2;
+            margin: 12px 0 20px;
+        }
+
+        .about-text p {
+            color: #6f5c49;
+            margin-bottom: 15px;
+        }
+
+        .about-point {
+            margin-top: 12px;
+            font-weight: 700;
+        }
+
+        .about-point i {
+            color: #bd821b;
+            margin-right: 8px;
+        }
+
+        /* KAPCSOLAT */
+
+        .contact {
+            background: var(--brown);
+            color: white;
+        }
+
+        .contact .section-heading p {
+            color: #d8c7b3;
+        }
+
+        .contact .section-heading small {
+            color: var(--gold-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .contact-box {
+            background: #ffffff0a;
+            border: 1px solid #ffffff1b;
+            border-radius: 18px;
+            padding: 30px;
+        }
+
+        .contact-box h3 {
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+        .contact-box h3 i {
+            color: var(--gold-light);
+            margin-right: 10px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            color: white;
+            padding: 13px 0;
+            border-bottom: 1px solid #ffffff16;
+            transition: 0.2s;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-link:last-child {
+            border-bottom: none;
+        }
+
+        .contact-link:hover {
+            color: var(--gold-light);
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #ffffff12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+        }
+
+        /* TELEFON ÉS MESSENGER IKONOK */
+
+        .phone-icon {
+            background: #168b50;
+            color: white;
+        }
+
+        .messenger-icon {
+            background: #087cff;
+            color: white;
+        }
+
+        .contact-note {
+            color: #d8c7b3;
+            font-size: 13px;
+            margin-top: 18px;
+        }
+
+        /* ALSÓ RÉSZ */
+
+        footer {
+            padding: 25px 7%;
+            background: #28180e;
+            color: #d3c1ad;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: var(--gold-light);
+        }
+
+        /* MOBILOS MEGJELENÉS */
+
+        @media (max-width: 1000px) {
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                gap: 14px;
+            }
+
+            .hero {
+                padding: 75px 6%;
+            }
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 14px 4%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .nav-button {
+                padding: 8px 13px;
+            }
+
+            .hero {
+                min-height: 440px;
+                padding: 65px 6%;
+                background-position: 60% center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .benefits {
+                gap: 15px;
+                padding: 22px 5%;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 60px 5%;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                max-width: 390px;
+            }
+
+            .product-card {
+                padding: 25px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-icon {
+                min-height: 230px;
+                font-size: 90px;
+            }
+
+            .about-text h2 {
+                font-size: 30px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                padding: 23px;
+            }
+        }
+
+
+/* MOZGÓ AKCIÓ FELIRAT */
+@keyframes akcioPulzus {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.4);
+    }
+
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 14px 4px rgba(229, 57, 53, 0.25);
+    }
+}
+
+
+.akcio-cimke {
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #e53935;
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    z-index: 10;
+    animation: akcioPulzus 1.5s infinite;
+}
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- FEJLÉC -->
+    <header>
+        <a href="#kezdolap" class="logo">
+            <i class="fa-solid fa-jar"></i>
+            Berec Méhészete
+        </a>
+
+        <nav>
+            <a href="#kezdolap">Főoldal</a>
+            <a href="#mezek">Mézeink</a>
+            <a href="#rolunk">Rólunk</a>
+            <a href="#kapcsolat" class="nav-button">Kapcsolat</a>
+        </nav>
+    </header>
+
+    <!-- FŐOLDAL -->
+    <main>
+        <section class="hero" id="kezdolap">
+            <div class="hero-content">
+                <div class="eyebrow">
+                    <i class="fa-solid fa-leaf"></i>
+                    Természetes ízek, egyenesen tőlünk
+                </div>
+
+                <h1>
+                    A természet<br>
+                    aranyló kincse.<br>
+                    <span>Berec Méhészete</span>
+                </h1>
+
+                <p>
+                    Fedezd fel mézeink gazdag ízvilágát!
+                    Válaszd ki a kedvencedet, és vedd fel velünk
+                    a kapcsolatot a rendeléshez.
+                </p>
+
+                <a href="#mezek" class="primary-button">
+                    Mézeink megtekintése
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ELŐNYÖK -->
+        <div class="benefits">
+            <div class="benefit">
+                <i class="fa-solid fa-jar"></i>
+                Saját mézünk
+            </div>
+
+            <div class="benefit">
+                <i class="fa-solid fa-leaf"></i>
+                Többféle méz
+            </div>
+
+            <div class="benefit">
+                <i class="fa-solid fa-scale-balanced"></i>
+                Árak kilogrammonként
+            </div>
+
+            <div class="benefit">
+                <i class="fa-solid fa-comments"></i>
+                Közvetlen rendelés
+            </div>
+        </div>
+
+        <!-- MÉZEK -->
+        <section class="section" id="mezek">
+            <div class="section-heading">
+                <small>Kínálatunk</small>
+                <h2>Válaszd ki a kedvenc mézedet!</h2>
+                <p>
+                    Négy különböző mézfajta, kedvező árakon.
+                    Minden ár 1 kilogramm mézre vonatkozik.
+                </p>
+            </div>
+
+            <div class="products">
+
+                <!-- REPCE -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-jar"></i>
+                    </div>
+
+                    <h3>Repceméz</h3>
+                    <p>1 kg-os kiszerelés</p>
+
+                    <div class="price">
+                        900 <span>Din / kg</span>
+                    </div>
+
+                    <a href="#kapcsolat" class="order-button">
+                        <i class="fa-solid fa-phone"></i>
+                        Érdeklődöm
+                    </a>
+                </article>
+
+                <!-- NAPRAFORGÓ -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+
+                    <h3>Napraforgóméz</h3>
+                    <p>1 kg-os kiszerelés</p>
+
+                    <div class="price">
+                        800 <span>Din / kg</span>
+                    </div>
+
+                    <a href="#kapcsolat" class="order-button">
+                        <i class="fa-solid fa-phone"></i>
+                        Érdeklődöm
+                    </a>
+                </article>
+
+                <!-- VEGYES VIRÁG -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+
+                    <h3>Vegyes virágméz</h3>
+                    <p>1 kg-os kiszerelés</p>
+
+                    <div class="price">
+                        800 <span>Din / kg</span>
+                    </div>
+
+                    <a href="#kapcsolat" class="order-button">
+                        <i class="fa-solid fa-phone"></i>
+                        Érdeklődöm
+                    </a>
+                </article>
+
+                <!-- AKÁC -->
+                <article class="product-card">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+
+                    <h3>Akácméz</h3>
+                    <p>1 kg-os kiszerelés</p>
+
+                    <div class="price">
+                        900 <span>Din / kg</span>
+                    </div>
+
+                    <a href="#kapcsolat" class="order-button">
+                        <i class="fa-solid fa-phone"></i>
+                        Érdeklődöm
+                    </a>
+                </article>
+                    </div>
+
+
+                                <!-- 3 KG-OS MÉZ -->
+                    <article class="product-card">
+                    <div class="product-icon">
+                        <i class="fa-solid fa-jar"></i>
+
+                    <span class="akcio-cimke">
+                        <i class="fa-solid fa-tag"></i> AKCIÓ
+                        </span>
+
+                    </div>
+
+                            <h3>....Fajtája....</h3>
+                            <p>3 kg-os kiszerelés</p>
+
+                    <div class="price">
+                            <span>1500Din / 3 kg</span>
+
+                                <a href="#kapcsolat" class="order-button">
+                                <i class="fa-solid fa-phone"></i>
+                                     Érdeklődöm
+                                 </a>
+
+                        </article>
+                     </div>
+
+            </div>
+        </section>
+
+        <!-- RÓLUNK -->
+        <section class="section about" id="rolunk">
+            <div class="about-content">
+
+                <div class="about-icon">
+                    <i class="fa-solid fa-jar"></i>
+                </div>
+
+                <div class="about-text">
+                    <small>Berec Méhészete</small>
+
+                    <h2>Édes ízek a természetből</h2>
+
+                    <p>
+                        Számunkra a méz több, mint egy finom édesség:
+                        a természet különleges ajándéka.
+                    </p>
+
+                    <p>
+                        Kínálatunkban repceméz, napraforgóméz,
+                        vegyes virágméz és akácméz is megtalálható.
+                        Válaszd ki azt, amelyik a legjobban ízlik!
+                    </p>
+
+                    <div class="about-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Négyféle méz
+                    </div>
+
+                    <div class="about-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Egyszerű kapcsolatfelvétel
+                    </div>
+
+                    <div class="about-point">
+                        <i class="fa-solid fa-check-circle"></i>
+                        Közvetlen érdeklődés és rendelés
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KAPCSOLAT -->
+        <section class="section contact" id="kapcsolat">
+            <div class="section-heading">
+                <small>Vedd fel velünk a kapcsolatot</small>
+                <h2>Rendelj mézet egyszerűen!</h2>
+                <p>
+                    Hívj fel minket telefonon, vagy írj nekünk
+                    Messengeren a rendelés részleteiért.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+
+                <!-- TELEFONOK -->
+                <div class="contact-box">
+                    <h3>
+                        <i class="fa-solid fa-phone"></i>
+                        Telefonos elérhetőség
+                    </h3>
+
+                    <a class="contact-link" href="tel:+38163630966">
+                        <span class="social-icon phone-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+
+                        <span>+381 63 630 966</span>
+                    </a>
+
+                    <a class="contact-link" href="tel:+381691663673">
+                        <span class="social-icon phone-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+
+                        <span>+381 69 166 3673</span>
+                    </a>
+
+                    <p class="contact-note">
+                        Kattints a telefonszámra a hívás indításához.
+                        Mobilon a telefonod hívóalkalmazása nyílik meg.
+                    </p>
+                </div>
+
+                <!-- MESSENGER -->
+                <div class="contact-box">
+                    <h3>
+                        <i class="fa-brands fa-facebook-messenger"></i>
+                        Írj Messengeren!
+                    </h3>
+
+                    <a class="contact-link"
+                       href="https://www.messenger.com/e2ee/t/6909733402460052"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        <span class="social-icon messenger-icon">
+                            <i class="fa-brands fa-facebook-messenger"></i>
+                        </span>
+
+                        <span>Messenger – 1. kapcsolat</span>
+                    </a>
+
+                    <a class="contact-link"
+                       href="https://www.messenger.com/e2ee/t/7845989805452476"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        <span class="social-icon messenger-icon">
+                            <i class="fa-brands fa-facebook-messenger"></i>
+                        </span>
+
+                        <span>Messenger – 2. kapcsolat</span>
+                    </a>
+
+                    <p class="contact-note">
+                        Kattints az ikonra vagy a szövegre,
+                        és megnyílik a Messenger-beszélgetés.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+
+
+
+    <!-- LÁBLÉC -->
+    <footer>
+        <p>
+            <strong>Berec Méhészete</strong> &copy;
+            <span id="year"></span> – A természet édes ajándéka.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+
+
+
+</body>
+</html>
